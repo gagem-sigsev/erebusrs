@@ -1,4 +1,5 @@
 use crate::packet::Packet;
+use std::net;
 
 #[derive(Debug)]
 pub struct Erebus {
@@ -28,4 +29,6 @@ impl Erebus {
             self.packets_sent, self.packets_recieved, self.packets_total,
         );
     }
+
+    pub fn send_packet(&self, spkt: &Packet) {}
 }
