@@ -21,4 +21,8 @@ fn main() {
 
     let dspkt = packet.deserialize_packet(&spkt);
     println!("Deseralized packet: {:?}\n", dspkt);
+
+    let res = erebus.send_packet(&packet);
+
+    println!("Send result: {:?}", res);
 }
