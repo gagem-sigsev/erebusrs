@@ -33,12 +33,10 @@ impl Packet {
     }
 
     pub fn serialize_packet(&self) -> Vec<u8> {
-        let spkt = bincode::serialize(&self).expect("Unable to serialize packet");
-        spkt
+        bincode::serialize(&self).expect("Unable to serialize packet")
     }
 
-    pub fn deserialize_packet(&self, spkt: &Vec<u8>) -> Packet {
-        let dspkt = bincode::deserialize(&spkt).expect("Unable to deserialize packet");
-        dspkt
+    pub fn deserialize_packet(&self, spkt: &[u8]) -> Packet {
+        bincode::deserialize(spkt).expect("Unable to deserialize packet")
     }
 }
