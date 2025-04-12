@@ -27,15 +27,18 @@ impl Packet {
         }
     }
 
+    // TODO: implement custom checksum calculation
     pub fn calculate_checksum(payload: &str) -> u16 {
         let checksum = checksum(payload.as_bytes(), 0);
         checksum
     }
 
+    // TODO: implement custom serialization
     pub fn serialize_packet(&self) -> Vec<u8> {
         bincode::serialize(&self).expect("Unable to serialize packet")
     }
 
+    // TODO: implement custom deserialization
     pub fn deserialize_packet(&self, spkt: &[u8]) -> Packet {
         bincode::deserialize(spkt).expect("Unable to deserialize packet")
     }

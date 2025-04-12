@@ -1,6 +1,7 @@
 use crate::packet::Packet;
 use std::io::Write;
 use std::net::{Ipv4Addr, SocketAddrV4, TcpListener};
+
 #[derive(Debug)]
 pub struct Erebus {
     packets_sent: u32,
@@ -30,6 +31,7 @@ impl Erebus {
         );
     }
 
+    // TODO: implement custom transport layer
     pub fn send_packet(&self, spkt: &Packet) -> std::io::Result<()> {
         let addr = SocketAddrV4::new(Ipv4Addr::new(127, 0, 0, 1), 8080);
         let listener = TcpListener::bind(addr)?;
