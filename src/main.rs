@@ -15,4 +15,14 @@ fn main() {
     let erebus = Erebus::new();
     erebus.log_protocol();
     erebus.log_packet(&packet);
+
+    let spkt = packet.serialize_packet();
+    println!("Serialized packet: {:?}\n", spkt);
+
+    let dspkt = packet.deserialize_packet(&spkt);
+    println!("Deseralized packet: {:?}\n", dspkt);
+
+    let res = erebus.send_packet(&packet);
+
+    println!("Send result: {:?}", res);
 }
